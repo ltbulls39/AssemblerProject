@@ -30,6 +30,7 @@ public class Utility {
         _operationTable.put("TD",    new Operation("TD",    "3/4", "E0"));
         _operationTable.put("TIXR",  new Operation("TIXR",  "2",   "B8"));
         _operationTable.put("WD",    new Operation("WD",    "3/4", "DC"));
+        _operationTable.put("ADD",   new Operation("ADD",   "3/4", "18"));
 
         _registerTable = new HashMap<>();
 

@@ -1,3 +1,3 @@
 COPY    START   0
-    LDA #7
+    ADD #7,#3
 END COPY

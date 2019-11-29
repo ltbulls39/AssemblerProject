@@ -312,13 +312,53 @@ public class MainAssembler {
     }
 
     public static void main(String[] args) {
+        MainAssembler asm;
         try {
-            MainAssembler asm = new MainAssembler();
+            asm = new MainAssembler();
 
 //            asm.assemble(new File("copy.asm"), new File("copy.o"));
             asm.assemble(new File("tester.asm"), new File("tester.o"));
+
+
+
+            System.out.println();
+            boolean flag = true;
+            Scanner scan = new Scanner(System.in);
+            while (flag) {
+                System.out.println("Press [1] to display register contents!\nPress [2] to edit register contents!");
+                System.out.println("Type STOP to stop");
+                String input = scan.nextLine();
+                switch (input.toLowerCase()) {
+                    case "stop":
+                        System.out.println("Exiting Process!");
+                        flag = false;
+                        break;
+                    case "1":
+                        System.out.println("Displaying register contents!");
+                        System.out.println("A: " + asm._registerTable.get("A"));
+                        System.out.println("X: "  + asm._registerTable.get("X"));
+                        System.out.println("B: " + asm._registerTable.get("B"));
+                        System.out.println();
+                        break;
+                    case "2":
+                        System.out.println("Which register would you like to edit?");
+                        String register_edit = scan.nextLine();
+                        System.out.println("What value would you like to store in register " + register_edit + "?");
+                        int register_val = Integer.parseInt(scan.nextLine());
+                        asm._registerTable.put(register_edit, register_val);
+                        System.out.println("Done editing!");
+                        break;
+                    default:
+                        System.out.println("Not a valid entry, try again.");
+                        break;
+                }
+            }
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+            System.exit(-1);
         }
+
+
     }
 }
