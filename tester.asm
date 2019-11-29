@@ -1,0 +1,3 @@
+COPY    START   0
+    LDA #7
+END COPY
